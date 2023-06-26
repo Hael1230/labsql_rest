@@ -3,6 +3,9 @@ package link.softbond.entities;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -28,7 +31,9 @@ public class Opcion{
 
     private Timestamp fecha;
 
-    @OneToOne
-    @JoinColumn(name="id")
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "id", nullable = false)
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	@JsonIgnore
     private Usuario usuario;
 }
