@@ -1,8 +1,12 @@
 package link.softbond.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+<<<<<<< HEAD
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+=======
+import org.springframework.http.ResponseEntity;
+>>>>>>> b9188b222c953af459b3c7c54195aad4db98f751
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -83,23 +87,24 @@ public class ProblemaController {
 
 =======
     @GetMapping("/{problemas}/{id}/{tabla}/{id}/{datos}")
-    public Tabla getTablabyid(@PathVariable Integer id) {
+    public ResponseEntity<Tabla> getTablabyid(@PathVariable Integer id) {
 
-        Optional<Problema> problemea = problemaRepository.findById(id);
-
-        if (!Problema.isEmpty()) {
-            Problema problema = problema.get(0);
+        Optional<Problema> problemaOptional = problemaRepository.findById(id);
+    
+        if (problemaOptional.isPresent()) {
+            Problema problema = problemaOptional.get();
             Tabla tabla = problema.getTabla();
-
+    
             if (tabla != null) {
                 Tabla tablaCompleta = TablaService.getTablaCompleta(tabla.getId());
-
+    
                 if (tablaCompleta != null) {
-                    return Tabla.ok(tablaCompleta);
+                    return ResponseEntity.ok(tablaCompleta);
                 }
             }
-        }  
-        return Tabla.notFound().build();
+        }
+    
+        return ResponseEntity.notFound().build();
     }
 
 
