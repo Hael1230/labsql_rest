@@ -1,5 +1,6 @@
 package link.softbond.entities;
 
+
 import java.io.Serializable;
 import javax.persistence.*;
 
@@ -13,21 +14,14 @@ import java.util.List;
 
 @Entity
 @Data
-
-public class Problema {
+public class Tabla {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
-    
+
     private String nombre;
-    private String descripcion;
-    private String docente;
-    private Integer estado;
-    private String nombrebase;
-    public Tabla getTabla() {
-        return null;
-    }
-    public static boolean isEmpty() {
-        return false;
-    }
+    private String edescripcion;
+    @ManyToOne
+    @JoinColumn(name="id")
+    private Problema idproblema;
 }
