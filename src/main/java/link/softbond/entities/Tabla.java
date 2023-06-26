@@ -1,5 +1,6 @@
 package link.softbond.entities;
 
+
 import java.io.Serializable;
 import javax.persistence.*;
 
@@ -13,22 +14,14 @@ import java.util.List;
 
 @Entity
 @Data
-public class Opcion{
+public class Tabla {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 
+    private String nombre;
+    private String edescripcion;
     @ManyToOne
     @JoinColumn(name="id")
-    private Consulta consulta;
-
-    @ManyToOne
-    @JoinColumn(name="id")
-    private Examen examen;
-
-    private Timestamp fecha;
-
-    @ManyToOne
-    @JoinColumn(name="id")
-    private Usuario usuario;
+    private Problema idproblema;
 }

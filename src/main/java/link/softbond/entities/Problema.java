@@ -13,22 +13,21 @@ import java.util.List;
 
 @Entity
 @Data
-public class Opcion{
+
+public class Problema {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
-
-    @ManyToOne
-    @JoinColumn(name="id")
-    private Consulta consulta;
-
-    @ManyToOne
-    @JoinColumn(name="id")
-    private Examen examen;
-
-    private Timestamp fecha;
-
-    @ManyToOne
-    @JoinColumn(name="id")
-    private Usuario usuario;
+    
+    private String nombre;
+    private String descripcion;
+    private String docente;
+    private Integer estado;
+    private String nombrebase;
+    public Tabla getTabla() {
+        return null;
+    }
+    public static boolean isEmpty() {
+        return false;
+    }
 }
