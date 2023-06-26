@@ -46,7 +46,7 @@ public class ExamenController {
 			return ResponseEntity.unprocessableEntity().build();
 		}
 
-		examenRequest.setId(examenOptional.get().getId());
+		examenRequest.setExamenId(examenOptional.get().getExamenId());
 		examenRepository.save(examenRequest);
 
 		return ResponseEntity.noContent().build();

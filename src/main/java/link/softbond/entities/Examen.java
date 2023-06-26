@@ -22,8 +22,8 @@ public class Examen {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "persona_id")
-	private Integer id;
+	@Column(name = "id")
+	private Integer examenId;
 	
 	private String descripcion;
 	@Column(name = "fechainicio")

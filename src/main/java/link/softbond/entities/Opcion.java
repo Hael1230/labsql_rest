@@ -16,7 +16,8 @@ import java.util.List;
 public class Opcion{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer id;
+    @Column(name = "id")
+	private Integer OpcionId;
 
     @OneToOne
     @JoinColumn(name="id")
