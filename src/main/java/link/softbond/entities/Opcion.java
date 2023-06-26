@@ -3,6 +3,9 @@ package link.softbond.entities;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -17,19 +20,21 @@ public class Opcion{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id")
-	private Integer OpcionId;
+	private Integer id;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name="id")
     private Consulta consulta;
 
-    @OneToOne
-    @JoinColumn(name="id")
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "id", nullable = false)
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	@JsonIgnore
     private Examen examen;
 
     private Timestamp fecha;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name="id")
     private Usuario usuario;
 }

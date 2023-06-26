@@ -23,7 +23,7 @@ public class Examen {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	private Integer examenId;
+	private Integer id;
 	
 	private String descripcion;
 	@Column(name = "fechainicio")
@@ -32,7 +32,7 @@ public class Examen {
 	private Date fechaFin;
 	private Integer cantidad;
 
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name="id")
     private Problema problema;
 }

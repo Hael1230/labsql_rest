@@ -24,6 +24,16 @@ public class ProblemaController {
         return problemaRepository.findAll();
     }
 
-    @GetMapping(/{problemas}/{list}/{activos})
-    public 
+    @GetMapping("/{problemas}/{list}/{activos}")
+    public Problema getProblemadobyEstado(@PathVariable Integer estado) {
+		
+		Optional<Problema> problema = problemaRepository.findByEstado(estado);
+		
+		if (problema.isPresent()) {
+			return problema.get();
+		}
+		
+		return null;
+
+	}
 }
