@@ -32,7 +32,7 @@ public class Examen {
 	private Date fechaFin;
 	private Integer cantidad;
 
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name="id")
     private Problema problema;
 }
