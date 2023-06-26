@@ -15,7 +15,6 @@ import link.softbond.repositorios.*;
 
 import java.util.List;
 import java.util.Optional;
-/{problemas}/{list}
 public class ProblemaController {
     @Autowired
     ProblemaRepository problemaRepository;
