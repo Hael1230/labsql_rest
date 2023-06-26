@@ -1,5 +1,10 @@
 package link.softbond.repositorios;
 
-public class ConsultaRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import link.softbond.entities.Examen;
+@Repository
+public interface ConsultaRepository {
     
 }
