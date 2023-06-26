@@ -1,5 +1,8 @@
 package link.softbond.controller;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,50 +18,60 @@ import link.softbond.repositorios.*;
 
 import java.util.List;
 import java.util.Optional;
+@RestController
+
 public class ProblemaController {
-    @Autowired
-    ProblemaRepository problemaRepository;
+	@Autowired
+	ProblemaRepository problemaRepository;
 
-    @GetMapping("/{problemas}/{list}")
-    public List<Problema> getProblemaAll(){
-        return problemaRepository.findAll();
-    }
+	@Autowired
+	private ExamenRepository examenRepository;
 
-    @GetMapping("/{problemas}/{list}/{activos}")
-    public Problema getProblemadobyEstado(@PathVariable Integer estado) {
-		
+	@GetMapping("/examenes/{id}/generar")
+	public Page<Opcion> listarComentariosPorPublicacion(@PathVariable(value = "id") Integer examenId,Pageable pageable){
+		return problemaRepository.findByExamenId(examenId, pageable);
+	}
+
+	@GetMapping("/{problemas}/{list}")
+	public List<Problema> getProblemaAll() {
+		return problemaRepository.findAll();
+	}
+
+	@GetMapping("/{problemas}/{list}/{activos}")
+	public Problema getProblemadobyEstado(@PathVariable Integer estado) {
+
 		Optional<Problema> problema = problemaRepository.findByEstado(estado);
-		
+
 		if (problema.isPresent()) {
 			return problema.get();
 		}
-		
+
 		return null;
 
 	}
 
-    @GetMapping("/{problemas}/{id}/{tablas}")
-    public Tabla getTablaid(@PathVariable Integer id) {
-		
-		List<Problema> problema = problemaRepository.findById(id);
-		
+	@GetMapping("/{problemas}/{id}/{tablas}")
+	public Tabla getTablaid(@PathVariable Integer id) {
+
+		Optional<Problema> problema = problemaRepository.findById(id);
+
 		if (!Problema.isEmpty()) {
 			return problema.get(0).getTabla();
 		}
-		
+
 		return null;
 
 	}
 
-    @GetMapping("/{problemas}/{id}/{consultas}")
-    public Tabla getConsultaid(@PathVariable Integer id) {
-		
+	@GetMapping("/{problemas}/{id}/{consultas}")
+	public Tabla getConsultaid(@PathVariable Integer id) {
+
 		List<Problema> problema = problemaRepository.findById(id);
-		
+
 		if (!Problema.isEmpty()) {
 			return problema.get(0).getTabla();
 		}
-		
+
 		return null;
 
 	}
