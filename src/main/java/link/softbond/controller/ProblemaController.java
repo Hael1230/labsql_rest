@@ -49,4 +49,17 @@ public class ProblemaController {
 		return null;
 
 	}
+
+    @GetMapping("/{problemas}/{id}/{consultas}")
+    public Tabla getConsultaid(@PathVariable Integer id) {
+		
+		List<Problema> problema = problemaRepository.findById(id);
+		
+		if (!Problema.isEmpty()) {
+			return problema.get(0).getTabla();
+		}
+		
+		return null;
+
+	}
 }
