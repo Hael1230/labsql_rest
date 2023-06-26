@@ -30,4 +30,7 @@ public class Problema {
     public static boolean isEmpty() {
         return false;
     }
+    public Problema get(int i) {
+        return null;
+    }
 }
