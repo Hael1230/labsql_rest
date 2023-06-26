@@ -23,4 +23,7 @@ public class ProblemaController {
     public List<Problema> getProblemaAll(){
         return problemaRepository.findAll();
     }
+
+    @GetMapping(/{problemas}/{list}/{activos})
+    public 
 }
