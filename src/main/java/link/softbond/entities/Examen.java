@@ -22,7 +22,7 @@ public class Examen {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "persona_id")
+	@Column(name = "id")
 	private Integer id;
 	
 	private String descripcion;

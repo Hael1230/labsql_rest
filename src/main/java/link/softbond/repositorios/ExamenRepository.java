@@ -1,27 +1,12 @@
 package link.softbond.repositorios;
 
-import java.util.Optional;
-
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import link.softbond.entities.Examen;
 
-public class ExamenRepository {
+@Repository
+public interface ExamenRepository extends JpaRepository<Examen, Integer>{
 
-    public Page<Examen> findAll(Pageable pageable) {
-        return null;
-    }
-
-    public Examen save(Examen examen) {
-        return null;
-    }
-
-    public Optional<Examen> findById(Integer id) {
-        return null;
-    }
-
-    public void delete(Examen examen) {
-    }
-    
+   
 }
