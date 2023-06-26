@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import link.softbond.entities.*;
 import link.softbond.repositorios.*;
+import link.softbond.service.*;
 
 import java.util.List;
 import java.util.Optional;
+@RestController
 public class ProblemaController {
     @Autowired
     ProblemaRepository problemaRepository;
@@ -40,7 +42,7 @@ public class ProblemaController {
     @GetMapping("/{problemas}/{id}/{tablas}")
     public Tabla getTablaid(@PathVariable Integer id) {
 		
-		List<Problema> problema = problemaRepository.findById(id);
+		List<Problema> problema = ProblemaService.findById(id);
 		
 		if (!Problema.isEmpty()) {
 			return problema.get(0).getTabla();
@@ -50,10 +52,31 @@ public class ProblemaController {
 
 	}
 
+    @GetMapping("/{problemas}/{id}/{tabla}/{id}/{datos}")
+    public Tabla getTablabyid(@PathVariable Integer id) {
+
+        Optional<Problema> problemea = problemaRepository.findById(id);
+
+        if (!Problema.isEmpty()) {
+            Problema problema = problema.get(0);
+            Tabla tabla = problema.getTabla();
+
+            if (tabla != null) {
+                Tabla tablaCompleta = TablaService.getTablaCompleta(tabla.getId());
+
+                if (tablaCompleta != null) {
+                    return Tabla.ok(tablaCompleta);
+                }
+            }
+        }  
+        return Tabla.notFound().build();
+    }
+
+
     @GetMapping("/{problemas}/{id}/{consultas}")
     public Tabla getConsultaid(@PathVariable Integer id) {
 		
-		List<Problema> problema = problemaRepository.findById(id);
+		List<Problema> problema = ProblemaService.findById(id);
 		
 		if (!Problema.isEmpty()) {
 			return problema.get(0).getTabla();

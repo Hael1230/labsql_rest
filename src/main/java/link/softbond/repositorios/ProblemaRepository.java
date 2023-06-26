@@ -2,21 +2,16 @@ package link.softbond.repositorios;
 
 import java.util.List;
 import java.util.Optional;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import link.softbond.entities.Problema;
 
-public class ProblemaRepository {
+@Repository
+public interface ProblemaRepository extends JpaRepository<Problema, Integer>{
 
-    public List<Problema> findAll() {
-        return null;
-    }
+    Optional<Problema> findByEstado(Integer estado);
 
-    public Optional<Problema> findByEstado(Integer estado) {
-        return null;
-    }
-
-    public List<Problema> findById(Integer id) {
-        return null;
-    }
+   
     
 }

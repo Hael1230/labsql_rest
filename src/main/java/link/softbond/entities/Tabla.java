@@ -24,4 +24,11 @@ public class Tabla {
     @ManyToOne
     @JoinColumn(name="id")
     private Problema idproblema;
+    public static Tabla ok(Tabla tablaCompleta) {
+        return null;
+    }
+    public static Object notFound() {
+        return null;
+    }
+   
 }
