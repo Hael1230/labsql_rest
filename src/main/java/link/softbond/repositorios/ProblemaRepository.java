@@ -14,5 +14,9 @@ public class ProblemaRepository {
     public Optional<Problema> findByEstado(Integer estado) {
         return null;
     }
+
+    public List<Problema> findById(Integer id) {
+        return null;
+    }
     
 }

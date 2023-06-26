@@ -10,4 +10,3 @@ public interface ExamenRepository extends JpaRepository<Examen, Integer>{
 
    
 }
-
